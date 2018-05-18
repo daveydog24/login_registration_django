@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="top">
+            <div class="messages">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>  
+            <div class="registration">
+                <form action="/registration" method="POST" name="registration">
+                    {% csrf_token %}
+                    <label for="first_name">First Name:<br><input type="text" name="first_name" id="first_name"></label><br>
+                    <label for="last_name">Last Name:<br><input type="text" name="last_name" id="last_name"></label><br>
+                    <label for="email">Email:<br><input type="email" name="email"></label>
+                    <label for="password">Password:<br><input type="password" name="password" id="registration_password"></label>
+                    <label for="confirm_password">Confirm Password:<br><input type="password" name="confirm_password" id="confirm_password"></label>
+                    <input type="submit" class="submit" value="Register">
+                </form>
+            </div>
+        </div>
+        <br><br><br><br>
+        <div class="bottom">
+            <div class="login">
+                <form action="/login" method="POST" name="login">
+                    {% csrf_token %}
+                    <label for="email">Email:<br><input type="email" name="email"></label>
+                    <label for="password">Password:<br><input type="password" name="password" id="login_password"></label>
+                    <input type="submit" class="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
